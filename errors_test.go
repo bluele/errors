@@ -12,11 +12,11 @@ func TestError(t *testing.T) {
 
 	err = ioError.Errorf("No such file: %v", "test.txt")
 	if !ioError.IsTypeOf(err) {
-		t.Error("ioError should be io type.")
+		t.Error("ioError should be IOError type.")
 	}
 	err = errors.New("some error")
 	if ioError.IsTypeOf(err) {
-		t.Error("ioError should not be io type.")
+		t.Error("ioError should not be IOError type.")
 	}
 	if ioError.IsTypeOf(nil) {
 		t.Error("ioError should not be nil.")
@@ -24,9 +24,9 @@ func TestError(t *testing.T) {
 
 	err = fileNotFoundError.Errorf("No such file: %v", "test.txt")
 	if !fileNotFoundError.IsTypeOf(err) {
-		t.Error("fileNotFoundError should be fileNotFound type.")
+		t.Error("fileNotFoundError should be FileNotFoundError type.")
 	}
 	if !ioError.IsTypeOf(err) {
-		t.Error("fileNotFoundError should be inherited by fileNotFound type.")
+		t.Error("fileNotFoundError should be IOError type.")
 	}
 }
